@@ -1,7 +1,7 @@
 {
 	"name": "Font Loader",
 	"version": "1.0",
-	"description": "Quickly and easily integrate web fonts from several different providers (Typekit, Google, Fontdeck, Fonts.com).",
+	"description": "Quickly and easily integrate web fonts from Typekit, Google, Fontdeck and Fonts.com",
 	"demo": "http://koken.me",
 	"author": {
 		"name": "Koken",
@@ -11,23 +11,27 @@
 	"data": {
 		"typekit": {
 			"label": "Typekit",
-			"info": "Enter the Typekit Kit ID that you would like to load. You can find this ID within Typekits Kit Editor interface.",
-			"type": "string"
+			"info": "Enter the Typekit Kit ID that you would like to load. You can find this ID within Typekit's Kit Editor interface.",
+			"type": "string",
+			"placeholder": "Enter your Typekit Kit ID"
 		},
 		"google": {
 			"label": "Google",
-			"info": "Enter the names of the font families from the Google Font API that you would like to load. Separate by commas (e.g. Droid Sans,Droid Serif)",
-			"type": "string"
+			"info": "Enter the names of the font families from the Google Font API you want to load. Separate font names with commas (e.g. Droid Sans,Droid Serif)",
+			"type": "string",
+			"placeholder": "Enter comma separated list of font names"
 		},
 		"fontdeck": {
 			"label": "Fontdeck",
 			"info": "Enter the ID of your website on Fontdeck. You can find this ID on the website page within your account settings.",
-			"type": "string"
+			"type": "string",
+			"placeholder": "Enter Fontdeck website ID"
 		},
 		"fontscom": {
 			"label": "Fonts.com",
 			"info": "Enter the Project ID of your fonts collection on Fonts.com. You can find this Project ID in the Publish tab.",
-			"type": "string"
+			"type": "string",
+			"placeholder": "Enter Project ID"
 		}
 	}
 }
