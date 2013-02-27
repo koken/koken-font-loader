@@ -32,6 +32,17 @@
 			"info": "Enter the Project ID of your fonts collection on Fonts.com. You can find this Project ID in the Publish tab.",
 			"type": "string",
 			"placeholder": "Enter Project ID"
+		},
+		"weights": {
+			"label": "Weights",
+			"type": "select",
+			"multi": true,
+			"options": [
+				{ "label": "200", "value": "200" },
+				{ "label": "400", "value": "400" },
+				{ "label": "700", "value": "700" },
+				{ "label": "900", "value": "900" }
+			]
 		}
 	}
 }
