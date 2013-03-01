@@ -19,8 +19,22 @@ class KokenFontLoader extends KokenPlugin {
 
 		if (!empty($this->data->google)) {
 			$families = array();
+			$xtras = '';
 			$parts = explode(',',$this->data->google);
 			foreach($parts as $family) {
+				if (isset($this->data->gstyles)) {
+					$xtras .= $this->data->gstyles . ',';
+				}
+				if (isset($this->data->gweights)) {
+					$xtras .= $this->data->gweights . ',';
+				}
+				if (isset($this->data->gsubsets)) {
+					$xtras .= $this->data->gsubsets . ',';
+				}
+				$xtras = rtrim($xtras, ',');
+				if ($xtras !== '') {
+					$family .= ':' . $xtras;
+				}
 				array_push($families,$family);
 			}
 			$output->google = (object) array('families' => $families);
