@@ -18,24 +18,37 @@ class KokenFontLoader extends KokenPlugin {
 		}
 
 		if (!empty($this->data->google)) {
+			$fonts = explode(',', $this->data->google);
 			$families = array();
-			$xtras = '';
-			$parts = explode(',',$this->data->google);
-			foreach($parts as $family) {
-				if (isset($this->data->gstyles)) {
-					$xtras .= $this->data->gstyles . ',';
+			$weights = false;
+			foreach($fonts as $f) {
+				if (strpos($f, '(') !== FALSE) {
+					$weights = true;
+					$parts = explode('(', $f);
+					$family = $parts[0] . ':400,' . $parts[1];
+					if (strpos($f, ')') !== FALSE) {
+						$family = str_replace(')', '', $family);
+						$weights = false;
+					}
 				}
-				if (isset($this->data->gweights)) {
-					$xtras .= $this->data->gweights . ',';
+				if ($weights) {
+					if (strpos($family, ':400') !== FALSE && !strpos($f, '(') && !strpos($f, ')')) {
+						$family .= ',' . $f;
+					}
+					if (strpos($f, ')') !== FALSE) {
+						if (!strpos($family, ':')) {
+							$family .= ':';
+						} else {
+							$family .= ',';
+						}
+						$family .= str_replace(')', '', $f);
+						$weights = false;
+					}
 				}
-				if (isset($this->data->gsubsets)) {
-					$xtras .= $this->data->gsubsets . ',';
+				if (!$weights) {
+					array_push($families, (isset($family)) ? $family : $f);
+					unset($family);
 				}
-				$xtras = rtrim($xtras, ',');
-				if ($xtras !== '') {
-					$family .= ':' . $xtras;
-				}
-				array_push($families,$family);
 			}
 			$output->google = (object) array('families' => $families);
 		}
