@@ -25,15 +25,15 @@ class KokenFontLoader extends KokenPlugin {
 				if (strpos($f, '(') !== FALSE) {
 					$weights = true;
 					$parts = explode('(', $f);
-					$family = $parts[0] . ':400,' . $parts[1];
+					$family = trim($parts[0]) . ':400,' . trim($parts[1]);
 					if (strpos($f, ')') !== FALSE) {
-						$family = str_replace(')', '', $family);
+						$family = trim(str_replace(')', '', $family));
 						$weights = false;
 					}
 				}
 				if ($weights) {
 					if (strpos($family, ':400') !== FALSE && !strpos($f, '(') && !strpos($f, ')')) {
-						$family .= ',' . $f;
+						$family .= ',' . trim($f);
 					}
 					if (strpos($f, ')') !== FALSE) {
 						if (!strpos($family, ':')) {
@@ -41,12 +41,12 @@ class KokenFontLoader extends KokenPlugin {
 						} else {
 							$family .= ',';
 						}
-						$family .= str_replace(')', '', $f);
+						$family .= str_replace(')', '', trim($f));
 						$weights = false;
 					}
 				}
 				if (!$weights) {
-					array_push($families, (isset($family)) ? $family : $f);
+					array_push($families, (isset($family)) ? trim($family) : trim($f));
 					unset($family);
 				}
 			}
