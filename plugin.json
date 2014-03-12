@@ -1,6 +1,6 @@
 {
 	"name": "Font Loader",
-	"version": "1.0",
+	"version": "1.0.1",
 	"description": "Use web fonts from Typekit, Google, Fontdeck and Fonts.com with your Koken site.",
 	"demo": "http://koken.me",
 	"author": {
