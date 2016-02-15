@@ -65,7 +65,7 @@ class KokenFontLoader extends KokenPlugin {
 		$fallback = 'document.write(\'<script src="'.$this->get_path().'/webfont.js">\x3C/script>\')';
 
 		echo <<<OUT
-<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
 <script>window.WebFont || $fallback</script>
 <script type="text/javascript">WebFont.load($output);</script>
 OUT;
